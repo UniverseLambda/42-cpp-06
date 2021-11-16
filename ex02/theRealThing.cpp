@@ -41,7 +41,9 @@ void identify(Base *p) {
 template<typename _ChildType>
 bool tryRefCast(Base &p) {
 	try {
-		dynamic_cast<_ChildType &>(p);
+		_ChildType &_tmp = dynamic_cast<_ChildType &>(p);
+
+		(void)_tmp;
 		return true;
 	} catch (...) {
 	}

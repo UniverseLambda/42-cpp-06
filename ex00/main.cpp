@@ -34,7 +34,7 @@ void displayInformation(std::string name, double value) {
 
 template<typename _TargetType, typename _SourceType>
 void tryCast(std::string name, _SourceType from) {
-	if (from < -(std::numeric_limits<_TargetType>::max()) || from > std::numeric_limits<_TargetType>::max()) {
+	if (from < (-(std::numeric_limits<_TargetType>::max())) - 1 || from > std::numeric_limits<_TargetType>::max()) {
 		displayInformation(name, "impossible");
 	} else {
 		displayInformation(name, static_cast<_TargetType>(from));
