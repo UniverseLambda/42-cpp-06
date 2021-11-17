@@ -41,6 +41,15 @@ void tryCast(std::string name, _SourceType from) {
 	}
 }
 
+template<typename _TargetType, bool _FloatingPoint, typename _SourceType>
+void tryCast(std::string name, _SourceType from) {
+	if (from < (-(std::numeric_limits<float>::max())) || from > std::numeric_limits<float>::max()) {
+		displayInformation(name, "impossible");
+	} else {
+		displayInformation(name, static_cast<float>(from));
+	}
+}
+
 void sigh(const std::string &str) {
 	if (str == "-inff" || str == "-inf") {
 		displayInformation("float", "-inff");
@@ -105,8 +114,8 @@ void handleParam(std::string str) {
 			}
 
 			tryCast<int>("int", value);
-			tryCast<float>("float", value);
-			tryCast<double>("double", value);
+			tryCast<float, true>("float", value);
+			tryCast<double, true>("double", value);
 		}
 	}
 }
